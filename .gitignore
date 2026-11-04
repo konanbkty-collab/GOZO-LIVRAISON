@@ -1,0 +1,23 @@
+# Dépendances
+node_modules/
+
+# Fichiers générés par Next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Secrets et configuration locale — ne JAMAIS publier sur GitHub
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Journaux et fichiers temporaires
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Déploiement
+.vercel/

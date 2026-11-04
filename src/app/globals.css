@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Thème GOZO LIVRAISON — couleurs extraites du logo                  */
+/* Bleu GOZO : #14448C  |  Jaune GOZO : #FFC72C                       */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-gozo-50: #eff6ff;
+  --color-gozo-100: #dbeafe;
+  --color-gozo-200: #bfdbfe;
+  --color-gozo-300: #93c5fd;
+  --color-gozo-400: #5b9bf0;
+  --color-gozo-500: #2f74d6;
+  --color-gozo-600: #1b5aaf;
+  --color-gozo-700: #14448c;
+  --color-gozo-800: #103568;
+  --color-gozo-900: #0e2f63;
+  --color-gozo-950: #081d3d;
+
+  --color-gold-50: #fffdf0;
+  --color-gold-100: #fff7cf;
+  --color-gold-200: #ffeea3;
+  --color-gold-300: #ffe066;
+  --color-gold-400: #ffc72c;
+  --color-gold-500: #f5b301;
+  --color-gold-600: #d99300;
+  --color-gold-700: #a86f00;
+  --color-gold-800: #7d5200;
+  --color-gold-900: #5c3d00;
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Animations                                                          */
+/* ------------------------------------------------------------------ */
+@keyframes gozo-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gozo-pulse-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes gozo-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gozo-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: gozo-fade-up 0.35s ease-out both;
+}
+
+.animate-slide-in {
+  animation: gozo-slide-in 0.3s ease-out both;
+}
+
+.animate-toast-in {
+  animation: gozo-toast-in 0.25s ease-out both;
+}
+
+.marker-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #1b5aaf;
+  animation: gozo-pulse-ring 1.6s ease-out infinite;
+}
+
+/* Leaflet : conteneurs */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #e8eef5;
+  z-index: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(8, 29, 61, 0.18);
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px;
+  font-size: 13px;
+}
+
+/* Zones sûres mobile */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
