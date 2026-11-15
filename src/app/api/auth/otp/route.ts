@@ -35,20 +35,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const code = await createOtp(phone, role);
+const code = await createOtp(phone, role);
 
     let smsSent = true; // On force le succès pour le test
+    console.log(`[MODE DEMO] Code OTP pour ${phone} : ${code}`);
 
-// Optionnel : si vous voulez voir le code OTP directement dans la console ou le retourner pour vos tests :
-console.log(`[MODE DEMO] Code OTP pour ${phone} : ${code}`);
-    }
-
-    // Hors mode démo, on n'arrive ici que si le SMS est parti : le code n'est jamais exposé.
-    return NextResponse.json({ ok: true, phone, demoCode: smsSent ? undefined : code });
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Erreur" }, { status: 500 });
-  }
-}
+    return NextResponse.json({ ok: true, phone, demoCode: code });
 
 /**
  * Contrat générique de la passerelle SMS :
