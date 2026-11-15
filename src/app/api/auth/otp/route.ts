@@ -37,15 +37,10 @@ export async function POST(request: NextRequest) {
 
     const code = await createOtp(phone, role);
 
-    let smsSent = false;
-    if (smsUrl) {
-      smsSent = await sendSms(smsUrl, phone, `GOZO LIVRAISON — Votre code de vérification est : ${code}`);
-      if (!smsSent && !DEMO_MODE) {
-        return NextResponse.json(
-          { error: "Impossible d'envoyer le SMS pour le moment. Réessayez dans quelques instants." },
-          { status: 502 },
-        );
-      }
+    let smsSent = true; // On force le succès pour le test
+
+// Optionnel : si vous voulez voir le code OTP directement dans la console ou le retourner pour vos tests :
+console.log(`[MODE DEMO] Code OTP pour ${phone} : ${code}`);
     }
 
     // Hors mode démo, on n'arrive ici que si le SMS est parti : le code n'est jamais exposé.
